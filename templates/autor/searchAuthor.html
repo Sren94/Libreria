@@ -1,0 +1,23 @@
+<h2>Hola</h2>
+<form method="get"> {%csrf_token%}
+    <input type="text" placeholder="Buscar" id="searchAuthor" name="searchAuthor">
+    <input type="submit" value="Buscar">
+</form>
+
+<table>
+  <tr>
+    <td>Nombre</td>
+    <td>Apellido</td>
+    <td>Nacionalidad</td>
+  </tr>
+    {% for a in autor %}
+    <tr>
+        <td>{{a.firstName}}</td>
+        <td>{{a.lastName}}</td>
+        <td>{{a.nationality}}</td>
+        <td>{{a.age}}
+    </tr>
+    {% endfor %}
+</table>
+
+</table>

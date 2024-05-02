@@ -26,6 +26,7 @@ class Reader(models.Model):
 class Loan(models.Model):
     reader = models.ForeignKey(
         Reader, 
+        
         on_delete=models.CASCADE
         )
     book= models.ForeignKey(
@@ -38,14 +39,14 @@ class Loan(models.Model):
     date_return= models.DateField(
         'Fecha De Devolucion',
         blank=True,
-        null=True
+        null=True,
         )
     bookReturn=models.BooleanField()
     class Meta:
-        verbose_name = "Prestamos"
+        verbose_name = "Prestamo"
         verbose_name_plural ="Prestamos"
         
     def __str__(self):
-        return self.reader+' '+self.book+' '+self.date_loan+' '
+        return str(self.reader.firstName)+' '+self.book.title+' '+str(self.date_loan)
 
    

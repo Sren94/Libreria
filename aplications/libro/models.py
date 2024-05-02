@@ -3,19 +3,16 @@ from aplications.autor.models import Author
 # Create your models here.
 class Category(models.Model):
     categoryName = models.CharField(
-        'Libro',
+        'Categoria',
         max_length=30)
     class Meta:
-        verbose_name = ("Libro")
-        verbose_name_plural = ("Libros")
+        verbose_name = ("Categoria")
+        verbose_name_plural = ("Categorias")
 
     def __str__(self):
         return self.categoryName
 class Book(models.Model):
-    category = models.ForeignKey(
-        Category,
-        on_delete=models.CASCADE
-        )
+    category = models.ManyToManyField(Category)
     authors = models.ManyToManyField(Author)
     title = models.CharField(
         'Titulo',
@@ -24,16 +21,22 @@ class Book(models.Model):
     date=models.DateField(
         "Fecha De Lanzamiento",
         auto_now=False,
-        auto_now_add=False
+        auto_now_add=False,
+        default=None,
+        blank=None
         )
     background= models.ImageField(
         'Imagen De Portada', 
-        upload_to='media/book'
-        ,height_field=None, 
-        width_field=None,
-        max_length=None
+        upload_to='media/book',
+        default=None ,
+        blank=True,
+        null=True,
+        
         )
-    views= models.PositiveIntegerField()
+    views= models.PositiveIntegerField(
+        default=0,
+        blank=True,
+    )
     class Meta:
         verbose_name = ("Libro")
         verbose_name_plural = ("Libros")

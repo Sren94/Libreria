@@ -25,4 +25,4 @@ class Author(models.Model):
         verbose_name_plural =("Autores")
 
     def __str__(self):
-        return self.firstName+' '+self.lastName+' '+self.nationality
+        return str(self.id)+' '+self.firstName+' '+self.lastName+' '+self.nationality

@@ -30,7 +30,8 @@ class AuthorManager(models.Manager):
             Q(firstName__icontains=var) | Q(lastName__icontains=var)
             )
         return found
-    def searchAuthorsMatches(self,var):
+    """
+     def searchAuthorsMatches(self,var):
         found= self.filter(
             #La funcion de Q funciona para los queries de la base de datos asi que 
             #por lo tanto funciona los metodos de los queries asi que 
@@ -41,5 +42,11 @@ class AuthorManager(models.Manager):
             #lo de arriba que es exclude hace que si la condicion que recibe 
             #si se cumple excluya los resultados que sean iguales a la condicion 
             
+            #tambien para mayor que y menor que se usa la siguiente sintaxis
+            resultado=self.filter(
+                edad__gt=40,
+                edad__gt=50
+            ).order_by('lastName','nombres','id')
         return found
         
+    """

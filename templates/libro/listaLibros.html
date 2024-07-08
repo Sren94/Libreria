@@ -1,0 +1,40 @@
+<h2>Hola</h2>
+<form method="get"> {%csrf_token%}
+    <input type="text" placeholder="Buscar" id="searchBook" name="searchBook">
+    <br>
+    <div>
+        <h4>Buscar Por fecha</h4>
+        <label for="date">Fecha De Inicio</label>
+        <input type="date" name="date" id="date">
+        <label for="dateEnd">Untima Fecha</label>
+        <input type="date" name="dateEnd" id="dateEnd">
+    </div>
+    <br>
+    <input type="submit" value="Buscar">
+</form>
+<table>
+    <tr>
+        <td>Titulo</td>
+        <td>Categoria</td>
+        <td>Autores</td>
+        <td>Año De Lanzamiento</td>
+    </tr>
+    {% for a in book %}
+    <tr>
+        <td>{{a.title}}</td>
+        <td>
+            {{a.category}}
+        </td>
+        <td>
+            {% for c in a.authors.all %}
+            {{c}}
+            {% endfor %}
+        </td>
+        <td>
+            {{a.date}}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+</table>

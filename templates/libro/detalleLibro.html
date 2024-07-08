@@ -1,0 +1,12 @@
+<h2>Detalle Del Libro: {{object.title}}</h2>
+
+<p>{{object.title}}</p>
+<p>{{object.category}}</p>
+<p>{{object.date}}</p>
+
+<p>Autores</p>
+
+{% for a in object.authors.all %}
+    <li>{{a}}</li>
+{% endfor %}
+    
